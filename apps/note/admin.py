@@ -9,7 +9,7 @@ class NoteCategoryAdmin(admin.ModelAdmin):
 
 
 class NoteAdmin(admin.ModelAdmin):
-    fields = ('category', 'title', 'content')
+    fields = ('category', 'type', 'title', 'content')
 
 admin.site.register(NoteCategory, NoteCategoryAdmin)
 admin.site.register(Note, NoteAdmin)

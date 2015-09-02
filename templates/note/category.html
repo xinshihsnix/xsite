@@ -1,0 +1,9 @@
+<table class="table table-bordered table-striped table-hover table-condensed">
+    {% for c in categories %}
+        <tr>
+            <td width="30%">
+                <a href="/note/notes_title?cid={{ c.id }}" target="_blank"> &nbsp {{ c.name }}</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>

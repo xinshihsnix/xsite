@@ -5,7 +5,10 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 
 from models import Domain
+from ..common.utils import section_list
 
-def domain_get(request):
+
+def domains_get(request):
     domains = Domain.objects.all()
-    return render_to_response('../templates/navigation.html', {'domains': domains})
+    domains_section = section_list(domains, 3)
+    return render_to_response('navigation.html', {'domains_section': domains_section})

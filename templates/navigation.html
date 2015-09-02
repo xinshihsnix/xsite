@@ -1,9 +1,12 @@
-<table>
-    {% for d in domains %}
+{% load navi_filters %}
+<table class="table table-bordered table-striped table-hover table-condensed">
+    {% for ds in domains_section %}
         <tr>
-            <td>
-                <a href="{{ d.url }}">{{ d.url }}</a>
+            {% for d in ds  %}
+            <td width="30%">
+                <a href="{{ d.url }}" target="_blank"><img src="{{ d.url }}/favicon.ico"> &nbsp {{ d.title|string_cut }}</a>
             </td>
+            {% endfor %}
         </tr>
     {% endfor %}
-</table>>
+</table>

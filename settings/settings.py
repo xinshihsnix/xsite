@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
     'apps.note',
     'apps.navigation',
     'apps.story',
@@ -61,7 +62,7 @@ WSGI_APPLICATION = 'wsgi.application'
 
 DATABASES = {
     'default': {
-        'secret'
+
     }
 }
 
@@ -79,7 +80,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\','/'),)
+TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\', '/'),)
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
@@ -90,3 +91,9 @@ STATICFILES_DIRS = (
 )
 
 STATIC_ROOT = ''    # collectstatic
+
+MEDIA_URL = "/media/"
+
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '../media').replace('\\', '/')
+
+CKEDITOR_UPLOAD_PATH = "ckeditor"
