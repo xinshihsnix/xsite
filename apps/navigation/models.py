@@ -6,7 +6,8 @@ from ..common.models import BaseModel
 
 DOMAIN_TYPE = (
     ('LEA', u'学习'),
-    ('REL', u'娱乐')
+    ('REL', u'娱乐'),
+    ('COM', u'公司'),
 )
 
 

@@ -11,6 +11,7 @@ def note_category_get(request):
     categories = NoteCategory.objects.all()
     return render_to_response('note/category.html', {'categories': categories})
 
+
 def notes_get(request):
     category = NoteCategory.get_by_str_id(request.GET.get('cid'))
 

@@ -17,8 +17,9 @@ class NoteCategory(BaseModel):
 
 NOTE_TYPE = (
     ('LON', u'一言难尽'),
-    ('SHO', u'言简意赅')
+    ('SHO', u'言简意赅'),
 )
+
 
 class Note(BaseModel):
     type = models.CharField(max_length=3, choices=NOTE_TYPE, blank=True, null=True, default='LON')
