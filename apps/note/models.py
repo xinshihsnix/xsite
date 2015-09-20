@@ -25,8 +25,8 @@ class Note(BaseModel):
     type = models.CharField(max_length=3, choices=NOTE_TYPE, blank=True, null=True, default='LON')
     category = models.ForeignKey(NoteCategory, verbose_name=u'目录')
     title = models.CharField(max_length=400, verbose_name=u'标题', default='')
-    # content = models.TextField(verbose_name=u'内容', default='')
-    content = RichTextField(verbose_name=u'内容', default='')
+    content = models.TextField(verbose_name=u'内容', default='')
+    # content = RichTextField(verbose_name=u'内容', default='')
 
     def __unicode__(self):
         return self.title

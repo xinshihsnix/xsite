@@ -5,7 +5,7 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404, _get_queryset, Http404
 
 class BaseModel(models.Model):
-    create_time = models.DateTimeField(verbose_name='创建时间', default=timezone.now, auto_now_add=True)
+    create_time = models.DateTimeField(verbose_name='创建时间', auto_now_add=True)
 
     class Meta:
         abstract = True

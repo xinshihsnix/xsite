@@ -36,10 +36,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ckeditor',
+    # 'ckeditor',
     'apps.note',
     'apps.navigation',
     'apps.story',
+    'apps.reminder',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -62,7 +63,11 @@ WSGI_APPLICATION = 'wsgi.application'
 
 DATABASES = {
     'default': {
-
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '127.0.0.1',
+        'NAME': 'xsite',
+        'USER': 'root',
+        'PASSWORD': 'root',
     }
 }
 
