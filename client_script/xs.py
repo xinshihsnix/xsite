@@ -3,16 +3,13 @@
 
 import sys
 from db_service import xsite_dbs
+import pyperclip
 
 # print sys.argv
 
 argvs = [a.lower() for a in sys.argv]   # 忽略大小写
 
 option = argvs[1]
-
-title = argvs[2] if len(argvs) > 2 else ''
-
-content = argvs[3] if len(argvs) > 3 else ''
 
 
 def handle_add():
@@ -29,9 +26,18 @@ def handle_sa():
     rows = xsite_dbs.cursor.fetchall()
 
     for r in rows:
-        print r[2], ' ------ ',r[3]
+        print r[1],' ------ ', r[2], ' ------ ',r[3]
 
     xsite_dbs.close()
+
+def handle_cp():
+    id = argvs[2]
+    _sql = 'select content from reminder_reminder where id=%s'%s
+    xsite_dbs.cursor.execute(_sql)
+    content = xsite_dbs.cursor.fetchone()[0]
+
+    print 'copy ok:', content
+    pyperclip.copy(content)
 
 options = [
     {
@@ -48,6 +54,11 @@ options = [
         'option': 'sa',
         'help_text': 'select all',
         'function': handle_sa,
+    },
+    {
+        'option': 'cp',
+        'help_text': 'copy',
+        'function': handle_cp,
     }
 ]
 

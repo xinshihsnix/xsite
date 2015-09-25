@@ -6,6 +6,7 @@ from ..common.models import BaseModel
 
 class Company(BaseModel):
     name = models.CharField(max_length=40, verbose_name=u'名称', default=u'其他')
+    is_current = models.BooleanField(default=False, verbose_name=u'是否当前所在公司')
 
     def __unicode__(self):
         return self.name

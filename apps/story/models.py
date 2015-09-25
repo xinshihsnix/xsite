@@ -13,4 +13,4 @@ class Story(BaseModel):
 
     class Meta:
         app_label = 'story'
-        db_table = 'story'
+        db_table = 'story_story'

@@ -33,5 +33,5 @@ class Note(BaseModel):
 
     class Meta:
         app_label = 'note'
-        db_table = 'note'
+        db_table = 'note_note'
 

@@ -14,7 +14,7 @@ class AuthBase(BaseModel):
     class Meta:
         abstract = True
         app_label = 'management'
-        db_table = 'auth_base'
+        db_table = 'management_auth_base'
 
 SEX_TYPE = (
     ('M', u'男'),
@@ -29,4 +29,4 @@ class User(AuthBase):
 
     class Meta:
         app_label = 'management'
-        db_table = 'user'
+        db_table = 'management_user'
