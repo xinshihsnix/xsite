@@ -26,13 +26,14 @@ def handle_sa():
     rows = xsite_dbs.cursor.fetchall()
 
     for r in rows:
-        print r[1],' ------ ', r[2], ' ------ ',r[3]
+        print r[0],' ------ ', r[2], ' ------ ',r[3]
 
     xsite_dbs.close()
 
 def handle_cp():
     id = argvs[2]
-    _sql = 'select content from reminder_reminder where id=%s'%s
+    _sql = 'select content from reminder_reminder where id=%s'%id
+
     xsite_dbs.cursor.execute(_sql)
     content = xsite_dbs.cursor.fetchone()[0]
 
