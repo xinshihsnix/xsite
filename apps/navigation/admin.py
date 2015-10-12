@@ -1,9 +1,14 @@
 # coding: utf-8
 import re
 import urllib
+from urlparse import urlparse
+import time
+
+from django.core.files import File
 from django.contrib import admin
 
 from models import Domain
+from ..common.utils import unique_time_str
 
 
 class DomainAdmin(admin.ModelAdmin):
@@ -30,5 +35,12 @@ class DomainAdmin(admin.ModelAdmin):
         obj.title = title
         obj.save()
 
+        # ----- save icon image from web ------
+        img_url = url + '/favicon.ico'
+        name = unique_time_str + '.ico'
+        content = urllib.urlretrieve(img_url)
+
+        obj.favicon.save(name, File(open(content[0])), save=True)
+        # ---------------  end  --------------
 
 admin.site.register(Domain, DomainAdmin)

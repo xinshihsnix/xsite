@@ -4,7 +4,7 @@
         <tr>
             {% for d in ds  %}
             <td width="30%">
-                <a href="{{ d.url }}" target="_blank"><img src="{{ d.url }}/favicon.ico"> &nbsp {{ d.title|string_cut }}</a>
+                <a href="{{ d.url }}" target="_blank"><img src="{{ d.favicon.url}}"> &nbsp {{ d.title|string_cut }}</a>
             </td>
             {% endfor %}
         </tr>

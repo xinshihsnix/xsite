@@ -1,6 +1,8 @@
 # coding: utf-8
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from django.conf import settings
+
 from apps.views import *
 from apps import navigation, note, views_for_bash
 
@@ -18,3 +20,10 @@ urlpatterns = patterns('',
 
     url(r'^bash/', include(views_for_bash.urls)),
 )
+
+
+if settings.DEBUG:
+   urlpatterns += patterns('',
+                            url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT }),
+                            url(r'^static/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.STATIC_ROOT}),
+                           )

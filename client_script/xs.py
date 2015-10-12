@@ -26,9 +26,10 @@ def handle_sa():
     rows = xsite_dbs.cursor.fetchall()
 
     for r in rows:
-        print r[0],' ------ ', r[2], ' ------ ',r[3]
+        print r[0], ' ------ ', r[2], ' ------ ', r[3]
 
     xsite_dbs.close()
+
 
 def handle_cp():
     id = argvs[2]
