@@ -6,6 +6,7 @@ from django.shortcuts import render_to_response
 from django.http import JsonResponse
 from django.conf import settings
 
+from common.utils import time_now_str
 
 def index(request):
     return render_to_response('index.html')
@@ -19,7 +20,29 @@ def welcome(request):
 def search(request):
     query = request.POST.get('query')
     pwd = request.POST.get('pwd')
-    if query and hashlib.md5(query).hexdigest() == settings.EYE_QUERY_MD5:
-        return JsonResponse({'result': 'wake_up'})
+    if query:
+        if hashlib.md5(query).hexdigest() == settings.EYE_QUERY_MD5:
+            request.session['xinshi_flag_A'] = True
+            return JsonResponse({'result': 'wake_up'})
+        else:
+            request.session['xinshi_flag_A'] = False
+
     if pwd and hashlib.md5(pwd).hexdigest() == settings.EYE_PWD_MD5:
+        if request.session['xinshi_flag_A']:
+            request.session['xinshi'] = 'i_am_xinshi'
         return render_to_response('monkey/eyes.html')
+
+
+@csrf_exempt
+def upload_file(request):
+    try:
+        pi_img = request.FILES.get('pi_img')
+        if pi_img:
+            dest = '{0}/{1}.jpg'.format(settings.PI_IMG_STORE_PATH, time_now_str())
+            with open(dest, "wb+") as destination:
+                for chunk in pi_img.chunks():
+                    destination.write(chunk)
+            return JsonResponse({'result': 'upload_success'})
+    except Exception, e:
+        print 'upload_file Exception:', e
+

@@ -1,4 +1,5 @@
 # coding: utf-8
+import datetime
 import time
 
 def section_list(list, rows):
@@ -17,3 +18,7 @@ def section_list(list, rows):
 def unique_time_str():
     """ 1343142315.35345 --> '134314231535345' """
     return str(time.time()).replace('.', '')
+
+
+def time_now_str():
+    return datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S')

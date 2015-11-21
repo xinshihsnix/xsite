@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^index/', index),
     url(r'^welcome/', welcome),
     url(r'^search/', search),
+    url(r'^upload_file/', upload_file),
 
     url(r'^pi/', include(pi.urls)),
     url(r'^navigation/', include(navigation.urls)),
