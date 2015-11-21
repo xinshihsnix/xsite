@@ -121,9 +121,7 @@
                     if (data.result == 'wake_up') {
                         var pwd=prompt("齐天大圣?");
                             $.post('/search/', {'pwd': pwd}, function (data) {
-                            if (data.result == 'open') {
-                                alert('yy')
-                                }
+                                $("#content_div").html(data);
                             })
                     }
                 })

@@ -14,6 +14,7 @@ def index(request):
 def welcome(request):
     return render_to_response('welcome.html')
 
+
 @csrf_exempt
 def search(request):
     query = request.POST.get('query')
@@ -21,4 +22,4 @@ def search(request):
     if query and hashlib.md5(query).hexdigest() == settings.EYE_QUERY_MD5:
         return JsonResponse({'result': 'wake_up'})
     if pwd and hashlib.md5(pwd).hexdigest() == settings.EYE_PWD_MD5:
-        return JsonResponse({'result': 'open'})
+        return render_to_response('monkey/eyes.html')

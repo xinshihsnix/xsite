@@ -1,6 +1,10 @@
 *.py[cod]
-
 *.so
-
 *.egg
 *.egg-info
+
+*.jpg
+*.png
+*.gif
+*.jpeg
+

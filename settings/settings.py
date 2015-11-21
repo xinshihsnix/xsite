@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'apps.navigation',
     'apps.story',
     'apps.reminder',
+    'apps.pi'
 )
 
 MIDDLEWARE_CLASSES = (
