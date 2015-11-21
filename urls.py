@@ -15,9 +15,10 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^index/', index),
     url(r'^welcome/', welcome),
+    url(r'^search/', search),
+
     url(r'^navigation/', include(navigation.urls)),
     url(r'^note/', include(note.urls)),
-
     url(r'^bash/', include(views_for_bash.urls)),
 )
 
