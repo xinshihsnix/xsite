@@ -1,11 +1,20 @@
 <img src="/pi/read_eye/" id="eye_img">
 
 <script>
+    i = 0;
     function set_img(){
-        $("#eye_img").attr("src", "/pi/read_eye/");
+       $.get("/pi/read_eye/?type=get_status&i=" + i, function (data) {
+                console.log(data);
+                if (data.status == 'ready'){
+                    $("#eye_img").attr("src", "/pi/read_eye/?type=get_img&i=" + i);
+                }
+            });
+        i += 1;
     }
 
-    setInterval(set_img, 1000)
+    $(function() {
+        setInterval(set_img, 1000);
+        })
 </script>
 
 
