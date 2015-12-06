@@ -9,7 +9,7 @@
     <meta name="author" content="">
 
     <link rel="icon" href="{% static favicon.ico %}">
-    <title>Dashboard Template for Bootstrap</title>
+    <title>信使的站点</title>
     <link href="{% static 'dist/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="/static/dashboard.css" rel="stylesheet">
 
@@ -45,6 +45,16 @@
     <script>
     function note_click(){
         $.get("/note/category/",
+            {},
+            function(data,status){
+                 // alert(data);
+                 $("#content_div").html(data);
+            });
+    }
+    </script>
+    <script>
+    function nighter_click(){
+        $.get("/fantasy/nighter/index/",
             {},
             function(data,status){
                  // alert(data);
@@ -95,7 +105,7 @@
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
+            <li><a onclick="nighter_click();">夜行</a></li>
             <li><a onclick="interests_click();">兴趣爱好</a></li>
           </ul>
         </div>

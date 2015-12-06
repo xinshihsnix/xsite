@@ -10,3 +10,5 @@ def xinshi_only():
                 raise
         return _wrapped_view
     return decorator
+
+
