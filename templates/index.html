@@ -22,6 +22,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!--xsite 定制-->
+    <link href="/static/css/xsite.css" rel="stylesheet">
     <script>
         $(document).ready(function() {
                     $.get("/welcome/",
@@ -62,8 +64,27 @@
             });
     }
     </script>
+    <script>
+        function click_sign_up() {
+            $.get("/account/sign_up/",
+                {},
+                function(data,status){
+                     $("#content_div").html(data);
+                });
+        }
+    </script>
 </head>
   <body>
+  <!--<table style="width: 100%; background-color: #000010; height: 50px">-->
+      <!--<tr>-->
+          <!--<td style="text-align: center"><a onclick="navigation_click();">网 站</a></td>-->
+          <!--<td style="text-align: center"><a onclick="note_click();">笔 记</a></td>-->
+          <!--<td style="text-align: center"><a onclick="nighter_click();">夜行</a></td>-->
+          <!--<td style="text-align: center"><a onclick="interests_click();">兴趣爱好</a></td>-->
+          <!--<td style="width: 200px"><input type="text" class="form-control" placeholder="Search..." id="search" onkeypress="search();"></td>-->
+      <!--</tr>-->
+  <!--</table>-->
+
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -71,17 +92,17 @@
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+            <span class="icon-bar">xxx</span>
           </button>
           <a class="navbar-brand" href="#">del self.depression</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><input type="text" class="form-control" placeholder="Search..." id="search" onkeypress="search();"></li>
+            <!--<li><input type="text" class="form-control" placeholder="Search..." id="search" onkeypress="search();"></li>-->
             <li><a href="#">Dashboard</a></li>
             <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
+            <li><a href="#">登录</a></li>
+            <li><a onclick='click_sign_up()'>注册</a></li>
           </ul>
         </div>
       </div>
@@ -91,26 +112,24 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a onclick="navigation_click();">网 站<span class="sr-only">(current)</span></a></li>
+            <li><input type="text" class="form-control" placeholder="Search..." id="search" onkeypress="search();"></li>
+            <li><a onclick="navigation_click();">网 站<span class="sr-only">(current)</span></a></li>
             <li><a onclick="note_click();">笔 记</a></li>
             <li><a href="#">杂 文</a></li>
             <li><a href="#">Export</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
             <li><a href="">More navigation</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a onclick="nighter_click();">夜行</a></li>
+            <li><a onclick='nighter_click();'>夜行</a></li>
             <li><a onclick="interests_click();">兴趣爱好</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a onclick=''>本站相关</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="content_div">
-
         </div>
       </div>
     </div>
@@ -123,7 +142,17 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{% static 'assets/js/ie10-viewport-bug-workaround.js' %}"></script>
 
-      <script>
+    <script>
+        $(function () {
+            $(".a li").click(function () {
+                alert('tes');
+                $("li[class='active']").removeAttr("class");
+                $(this).addClass("active");
+            });
+        });
+    </script>
+
+    <script>
         function search(){
             if(event.keyCode == 13){
                 query = $('#search').val();
@@ -137,6 +166,17 @@
                 })
             }
         }
+    </script>
+
+    <!--侧边选中样式-->
+    <script>
+        $(document).ready(function () {
+            $('ul.nav > li').click(function (e) {
+                e.preventDefault();
+                $('ul.nav > li').removeClass('active');
+                $(this).addClass('active');
+                });
+        });
     </script>
   </body>
 </html>

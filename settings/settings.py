@@ -41,7 +41,8 @@ INSTALLED_APPS = (
     'apps.navigation',
     'apps.story',
     'apps.reminder',
-    'apps.pi'
+    'apps.pi',
+    'apps.account'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -103,3 +104,5 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '../media').replace('\\', '/')
 
 CKEDITOR_UPLOAD_PATH = "ckeditor"
+
+AUTH_USER_MODEL = 'account.User'
