@@ -1,8 +1,12 @@
 # coding: utf-8
+from Crypto.Cipher import AES
+
 from django.contrib.auth.models import AbstractBaseUser, User, PermissionsMixin, BaseUserManager
 from django.db import models
 from ..common.models import BaseModel
 from django.utils import timezone
+from django.conf import settings
+
 
 SEX_TYPE = (
     ('M', u'男'),
@@ -38,6 +42,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=128, verbose_name=u'用户名', unique=True)
     raw_password = models.CharField(max_length=128, verbose_name=u'原始密码')     # 原始密码, 为找回密码
+    email = models.EmailField(unique = True, verbose_name='Email', null=True)
 
     class Meta:
         app_label = 'account'
@@ -59,6 +64,12 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return self.first_name
+
+    def set_raw_password(self, raw_password):
+        d = AES.new(settings.AES_PWD)
+        x_content = raw_password + (16 - len(raw_password)%16)*'u'    # 被加密字符串要是16的倍数，所以不够的用u填充
+        encrypted_content = d.encrypt(x_content)
+        self.raw_password = encrypted_content
 
     objects = UserManager()
 

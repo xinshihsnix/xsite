@@ -5,4 +5,5 @@ from views import *
 
 urlpatterns = patterns('',
     url(r'^sign_up/', sign_up),
+    url(r'^is_username_exists/', is_username_exists),
 )

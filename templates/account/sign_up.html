@@ -1,14 +1,16 @@
 <div align="center">
+<form action="/account/sign_up/" method="post" enctype="multipart/form-data" onsubmit="return validate_sign_up();" id="sign_up_form">
+<p id="info"></p>
 <table style="width: 40%;">
     <tr>
         <td>
             <div class="input-group">
                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">
+                  <p class="btn btn-default" type="button">
                      帐号
-                  </button>
+                  </p>
                </span>
-               <input type="text" class="form-control">
+               <input type="text" class="form-control" name="username" onclick="is_username_exists()" id="username">
             </div>
         </td>
     </tr>
@@ -16,11 +18,11 @@
         <td>
             <div class="input-group">
                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">
+                  <p class="btn btn-default" type="button">
                      密码
-                  </button>
+                  </p>
                </span>
-               <input type="text" class="form-control">
+               <input type="password" class="form-control" name="raw_password" type="password" id="password">
             </div>
         </td>
     </tr>
@@ -28,11 +30,11 @@
         <td>
             <div class="input-group">
                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">
+                  <p class="btn btn-default" type="button">
                      确认
-                  </button>
+                  </p>
                </span>
-               <input type="text" class="form-control">
+               <input class="form-control" name="confirm_password" type="password" id="confirm_password">
             </div>
         </td>
     </tr>
@@ -40,19 +42,20 @@
         <td>
             <div class="input-group">
                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">
+                  <p class="btn btn-default" type="button">
                      邮箱
-                  </button>
+                  </p>
                </span>
-               <input type="text" class="form-control">
+               <input type="text" class="form-control" name="email" id="email">
             </div>
         </td>
     </tr>
     <tr>
         <td align="center">
-            <button type="button" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;提交&nbsp;&nbsp;&nbsp;&nbsp;</button>
+            <button type="submit" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;提交&nbsp;&nbsp;&nbsp;&nbsp;</button>
             <!--<button type="button" class="btn btn-primary btn-lg btn-block">提交</button>-->
         </td>
     </tr>
 </table>
+</form>
 </div>

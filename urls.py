@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'xsite.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     # url(r'^ckeditor/', include('ckeditor.urls')),    # django富文本
+    url(r'^$', index),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^index/', index),

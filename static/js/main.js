@@ -8,4 +8,3 @@ function turnPage(url){
     })
   }
 
-   GRANT ALL ON *.* TO root@'%' IDENTIFIED BY 'xinshi' WITH GRANT OPTION;
