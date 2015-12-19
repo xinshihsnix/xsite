@@ -1,9 +1,10 @@
 # coding: utf-8
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import authenticate, login
 
 from models import User
 
@@ -25,8 +26,22 @@ def sign_up(request):
         # return HttpResponse('ok')
         return HttpResponseRedirect('/index')
 
-def login_in(request):
-    pass
+
+@csrf_exempt
+def sign_in(request):
+    if request.method == 'GET':
+        return render_to_response('account/sign_in.html')
+
+    if request.method == 'POST':
+        print request.POST
+        username=request.POST.get('username')
+        raw_password=request.POST.get('password')
+        user = authenticate(username=username, password=raw_password)
+        if user is not None:
+            login(request, user)
+            return JsonResponse({'is_success': True})
+        else:
+            return JsonResponse({'is_success': False})
 
 
 def is_username_exists(request):

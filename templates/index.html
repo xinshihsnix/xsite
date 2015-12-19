@@ -24,6 +24,8 @@
     <![endif]-->
      <!--js custom for xsite-->
     <script src="{% static 'js/xsite/sign-up.js' %}"></script>
+    <script src="{% static 'js/xsite/sign-in.js' %}"></script>
+    <script src="{% static 'js/xsite/about.js' %}"></script>
     <!--end-->
     <!--xsite 定制-->
     <link href="/static/css/xsite.css" rel="stylesheet">
@@ -75,6 +77,23 @@
                      $("#content_div").html(data);
                 });
         }
+
+        function click_sign_in() {
+            $.get("/account/sign_in/",
+                {},
+                function(data,status){
+                     $("#content_div").html(data);
+                });
+        }
+    </script>
+    <script>
+        function about_click(){
+            $.get("/about/index/",
+                {},
+                function(data,status){
+                     $("#content_div").html(data);
+                });
+        }
     </script>
 </head>
   <body>
@@ -102,9 +121,9 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <!--<li><input type="text" class="form-control" placeholder="Search..." id="search" onkeypress="search();"></li>-->
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">登录</a></li>
+            <!--<li><a href="#">Dashboard</a></li>-->
+            <!--<li><a href="#">Settings</a></li>-->
+            <li><a onclick='click_sign_in()'>登录</a></li>
             <li><a onclick='click_sign_up()'>注册</a></li>
           </ul>
         </div>
@@ -129,7 +148,7 @@
             <li><a onclick="interests_click();">兴趣爱好</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a onclick=''>本站相关</a></li>
+            <li><a onclick='about_click();'>本站相关</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="content_div">

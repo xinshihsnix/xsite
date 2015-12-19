@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.conf import settings
 
 from apps.views import *
-from apps import navigation, note, views_for_bash, pi, fantasy, account
+from apps import navigation, note, views_for_bash, pi, fantasy, account, about
 
 urlpatterns = patterns('',
     # Examples:
@@ -25,6 +25,8 @@ urlpatterns = patterns('',
     url(r'^bash/', include(views_for_bash.urls)),
     url(r'^fantasy/', include(fantasy.urls)),
     url(r'^account/', include(account.urls)),
+    url(r'^about/', include(about.urls)),
+
 )
 
 

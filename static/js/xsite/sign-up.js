@@ -36,13 +36,13 @@ function validate_sign_up(){
 }
 
 function is_username_exists(){
-    username = $('#username').val()
-    $.get("/account/is_username_exists/",
-    {'username': username},
-    function(data,status){
-        $('#info').html('')
-        if(data == 'no'){
-            $('#info').html('用户名已存在')
-        }
-    });
+        username = $('#username').val()
+        $.get("/account/is_username_exists/",
+        {'username': username},
+        function(data,status){
+            $('#info').html('')
+            if(data == 'yes'){
+                $('#info').html('用户名已存在')
+            }
+        });
 }
