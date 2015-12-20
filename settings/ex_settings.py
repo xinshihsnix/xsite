@@ -9,4 +9,4 @@ PI_IMG_STORE_PATH = '/var/pi_media'
 
 AES_PWD = 'ecee16ccca3b12bd9fd00c476047c888'
 
-ALLOWED_CMD_A = ['ls', 'pwd', 'whoami', 'man', 'date', 'cal', 'less', 'find']
+ALLOWED_CMD_A = ['ls', 'pwd', 'whoami', 'man', 'date', 'cal', 'find']
