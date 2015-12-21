@@ -97,7 +97,7 @@ STATICFILES_DIRS = (
     os.path.join(os.path.dirname(__file__), '../static').replace('\\', '/'),
 )
 
-STATIC_ROOT = ''    # collectstatic
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")    # collectstatic
 
 MEDIA_URL = "/media/"
 
