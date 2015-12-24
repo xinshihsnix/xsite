@@ -11,7 +11,7 @@ from django.conf import settings
 SEX_TYPE = (
     ('M', u'男'),
     ('F', u'女'),
-    ('S', u'密码')
+    ('S', u'密秘')
 )
 
 

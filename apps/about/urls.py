@@ -6,4 +6,5 @@ from views import *
 urlpatterns = patterns('',
     url(r'^index/', index),
     url(r'^terminal/', terminal),
+    url(r'^leavemessage/', leavemessage),
 )
