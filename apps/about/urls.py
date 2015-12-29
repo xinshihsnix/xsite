@@ -7,4 +7,6 @@ urlpatterns = patterns('',
     url(r'^index/', index),
     url(r'^terminal/', terminal),
     url(r'^leavemessage/', leavemessage),
+    url(r'^master/', master),
+
 )

@@ -1,0 +1,29 @@
+<table width="100%">
+    <tr>
+        <td>
+            <div class="form-group">
+                <textarea class="form-control" rows="3" id="message_content"></textarea>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <center>
+                <button type="button" class="btn btn-primary" onclick="submit_leavemessage();">&nbsp;&nbsp;&nbsp;&nbsp;提交&nbsp;&nbsp;&nbsp;&nbsp;</button>
+            </center>
+        </td>
+    </tr>
+</table>
+
+<br>
+*留言*
+<hr>
+{% for m in messages %}
+<div style="background-color: #eeeeee">
+   <p>{% if m.user %}{{ m.user.username }}{% else %}{{ m.ip }}{% endif %}</p>
+   <p>{{ m.content }}</p> <p align="right">{{ m.create_time|date:'Y-m-d H:i' }}</p>
+</div>
+{% endfor %}
+
+
+

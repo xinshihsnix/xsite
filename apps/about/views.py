@@ -55,3 +55,9 @@ def leavemessage(request):
             return HttpResponse('ok')
     except Exception, e:
         print 'eeee:', e
+
+
+@csrf_exempt
+def master(request):
+    """ 点击站长 """
+    return render_to_response('about/master.html')

@@ -36,3 +36,12 @@ function submit_leavemessage(){
         }
     })
 }
+
+
+function click_master(){
+    $.get("/about/master/",
+        {},
+        function(data,status){
+             $("#content_div").html(data);
+        });
+}
