@@ -43,7 +43,8 @@ def leavemessage(request):
     """
     try:
         if request.method == 'GET':
-            return render_to_response('about/leavemessage.html')
+            messages = LeaveMessage.objects.order_by('-id')
+            return render_to_response('about/leavemessage.html', {'messages': messages})
         if request.method == 'POST':
             content = request.POST.get('message_content')
             ip = get_remote_ip_addr_by_request(request)

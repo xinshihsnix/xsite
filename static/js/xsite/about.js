@@ -31,7 +31,6 @@ function click_leavemessage(){
 function submit_leavemessage(){
     message_content = $('#message_content').val();
     $.post('/about/leavemessage/', {'message_content': message_content}, function (data) {
-        alert(data)
         if(data == 'ok'){
             click_leavemessage();
         }
