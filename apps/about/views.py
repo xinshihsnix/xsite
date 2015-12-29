@@ -41,13 +41,16 @@ def leavemessage(request):
     get:显示留言列表
     post: 提交留言
     """
-    # if request.method == 'GET':
-    #     ms = LeaveMessage.objects.all()
-    # if request.method == 'POST':
-    content = request.POST.get('content')
-    ip = get_remote_ip_addr_by_request(request)
-    if request.user.is_authenticated():
-        t = LeaveMessage.objects.create(user=request.user, content=content, ip=ip)
-    else:
-        t = LeaveMessage.objects.create(content=content, ip=ip)
-    return HttpResponse('ok')
+    try:
+        if request.method == 'GET':
+            return render_to_response('about/leavemessage.html')
+        if request.method == 'POST':
+            content = request.POST.get('message_content')
+            ip = get_remote_ip_addr_by_request(request)
+            if request.user.is_authenticated():
+                t = LeaveMessage.objects.create(user=request.user, content=content, ip=ip)
+            else:
+                t = LeaveMessage.objects.create(content=content, ip=ip)
+            return HttpResponse('ok')
+    except Exception, e:
+        print 'eeee:', e

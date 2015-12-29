@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'apps.pi',
     'apps.account',
     'apps.about',
+    'apps.statistics'
 )
 
 MIDDLEWARE_CLASSES = (

@@ -6,4 +6,4 @@ def get_remote_ip_addr_by_request(request):
         ip =  request.META['HTTP_X_FORWARDED_FOR']
     else:
         ip = request.META['REMOTE_ADDR']
-    return request
+    return ip
