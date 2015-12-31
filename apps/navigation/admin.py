@@ -29,7 +29,7 @@ class DomainAdmin(admin.ModelAdmin):
         # 获取网页标题
         html = urllib.urlopen(url).read()
         m = re.search(r'<title>(.*)</title>', html, flags=re.I)
-        title = m.group(1)
+        title = m.group(1) if m else form.cleaned_data.get('title')
 
         obj.url = url
         obj.title = title
@@ -37,7 +37,7 @@ class DomainAdmin(admin.ModelAdmin):
 
         # ----- save icon image from web ------
         img_url = url + '/favicon.ico'
-        name = unique_time_str + '.ico'
+        name = unique_time_str() + '.ico'
         content = urllib.urlretrieve(img_url)
 
         obj.favicon.save(name, File(open(content[0])), save=True)

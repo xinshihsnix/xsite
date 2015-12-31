@@ -5,7 +5,8 @@ DATETIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 EYE_QUERY_MD5 = 'ef990f660cb7fa47a20725a508a8db8b'
 EYE_PWD_MD5 = 'fae969b1fbc0a840a6e2217fa5ec4b51'
 
-PI_IMG_STORE_PATH = '/var/pi_media'
+PI_IMG_STORE_PATH = '/var/pi_media'     # pi摄像头图片本地存储路径
+MONKEY_EYE_IMG_STORE_PATH = '/var/'     # TODO  远程图片存储路径
 
 AES_PWD = 'ecee16ccca3b12bd9fd00c476047c888'
 

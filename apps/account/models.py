@@ -30,8 +30,8 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username, email, password, **extra_fields):
-        u = self.create_user(username, email, password, **extra_fields)
+    def create_superuser(self, username, password, email=None, **extra_fields):
+        u = self.create_user(username, password=password, email=email, **extra_fields)
         u.is_staff = True
         u.is_active = True
         u.is_superuser = True
@@ -58,12 +58,12 @@ class User(AbstractBaseUser, PermissionsMixin):
         help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.')
 
     def get_full_name(self):
-        full_name = '%s %s' % (self.first_name, self.last_name)
-        return full_name.strip()
+        return self.username.strip()
 
 
     def get_short_name(self):
-        return self.first_name
+        return self.username.strip()
+
 
     def set_raw_password(self, raw_password):
         d = AES.new(settings.AES_PWD)
