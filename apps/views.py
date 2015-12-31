@@ -18,19 +18,22 @@ def welcome(request):
 
 @csrf_exempt
 def search(request):
-    query = request.POST.get('query')
-    pwd = request.POST.get('pwd')
-    if query:
-        if hashlib.md5(query).hexdigest() == settings.EYE_QUERY_MD5:
-            request.session['xinshi_flag_A'] = True
-            return JsonResponse({'result': 'wake_up'})
-        else:
-            request.session['xinshi_flag_A'] = False
+    try:
+        query = request.POST.get('query')
+        pwd = request.POST.get('pwd')
+        if query:
+            if hashlib.md5(query).hexdigest() == settings.EYE_QUERY_MD5:
+                request.session['xinshi_flag_A'] = True
+                return JsonResponse({'result': 'wake_up'})
+            else:
+                request.session['xinshi_flag_A'] = False
 
-    if pwd and hashlib.md5(pwd).hexdigest() == settings.EYE_PWD_MD5:
-        if request.session['xinshi_flag_A']:
-            request.session['xinshi'] = 'i_am_xinshi'
-        return render_to_response('monkey/eyes.html')
+        if pwd and hashlib.md5(pwd).hexdigest() == settings.EYE_PWD_MD5:
+            if request.session['xinshi_flag_A']:
+                request.session['xinshi'] = 'i_am_xinshi'
+            return render_to_response('monkey/eyes.html')
+    except Exception, e:
+        print 'eee:', e
 
 
 @csrf_exempt
