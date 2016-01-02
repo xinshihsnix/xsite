@@ -2,7 +2,7 @@
 {% load staticfiles %}
 <html lang="en">
 <head>
-    <bgsound src="音乐url" loop="-1">
+    <bgsound src="音乐url" loop="-1"></bgsound>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,6 +27,7 @@
     <script src="{% static 'js/xsite/sign-up.js' %}"></script>
     <script src="{% static 'js/xsite/sign-in.js' %}"></script>
     <script src="{% static 'js/xsite/about.js' %}"></script>
+    <script src="{% static 'js/xsite/common.js' %}"></script>
     <!--end-->
     <!--xsite 定制-->
     <link href="/static/css/xsite.css" rel="stylesheet">
@@ -39,62 +40,6 @@
                              $("#content_div").html(data);
                         });
         });
-    </script>
-    <script>
-    function navigation_click(){
-        $.get("/navigation/domains/",
-            {},
-            function(data,status){
-                 // alert(data);
-                 $("#content_div").html(data);
-            });
-    }
-    </script>
-    <script>
-    function note_click(){
-        $.get("/note/category/",
-            {},
-            function(data,status){
-                 // alert(data);
-                 $("#content_div").html(data);
-            });
-    }
-    </script>
-    <script>
-    function nighter_click(){
-        $.get("/fantasy/nighter/index/",
-            {},
-            function(data,status){
-                 // alert(data);
-                 $("#content_div").html(data);
-            });
-    }
-    </script>
-    <script>
-        function click_sign_up() {
-            $.get("/account/sign_up/",
-                {},
-                function(data,status){
-                     $("#content_div").html(data);
-                });
-        }
-
-        function click_sign_in() {
-            $.get("/account/sign_in/",
-                {},
-                function(data,status){
-                     $("#content_div").html(data);
-                });
-        }
-    </script>
-    <script>
-        function about_click(){
-            $.get("/about/index/",
-                {},
-                function(data,status){
-                     $("#content_div").html(data);
-                });
-        }
     </script>
 </head>
   <body>
@@ -124,8 +69,8 @@
             <!--<li><input type="text" class="form-control" placeholder="Search..." id="search" onkeypress="search();"></li>-->
             <!--<li><a href="#">Dashboard</a></li>-->
             <!--<li><a href="#">Settings</a></li>-->
-            <li><a onclick='click_sign_in()'>登录</a></li>
-            <li><a onclick='click_sign_up()'>注册</a></li>
+            <li><a onclick="fresh_content_when_click('/account/sign_in/')">登录</a></li>
+            <li><a onclick="fresh_content_when_click('/account/sign_up/')">注册</a></li>
           </ul>
         </div>
       </div>
@@ -136,20 +81,20 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li><input type="text" class="form-control" placeholder="Search..." id="search" onkeypress="search(event);"></li>
-            <li><a onclick="navigation_click();">常用网站<span class="sr-only">(current)</span></a></li>
-            <li><a onclick="note_click();">笔 记</a></li>
-            <li><a href="#">杂 文</a></li>
+            <li><a onclick="fresh_content_when_click('/navigation/domains/');">常用网站<span class="sr-only">(current)</span></a></li>
+            <li><a onclick="fresh_content_when_click('/note/category/');">笔 记</a></li>
             <li><a href="#">Export</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="">More navigation</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a onclick='nighter_click();'>夜行</a></li>
-            <li><a onclick="interests_click();">兴趣爱好</a></li>
+            <li><a onclick="fresh_content_when_click('/fantasy/nighter/index/');">夜行</a></li>
+            <li><a onclick="fresh_content_when_click();">兴趣爱好</a></li>
+            <li><a onclick="fresh_content_when_click('/story/index/');">一言难尽</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a onclick='about_click();'>本站相关</a></li>
+            <li><a onclick="fresh_content_when_click('/about/index/');">本站相关</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="content_div">

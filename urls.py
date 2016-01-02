@@ -4,13 +4,13 @@ from django.contrib import admin
 from django.conf import settings
 
 from apps.views import *
-from apps import navigation, note, views_for_bash, pi, fantasy, account, about
+from apps import navigation, note, views_for_bash, pi, fantasy, account, about, story
 
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'xsite.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    # url(r'^ckeditor/', include('ckeditor.urls')),    # django富文本
+    # url(r'^ckeditor/', include('ckeditor_uploader.urls')),    # django富文本
     url(r'^$', index),
 
     url(r'^admin/', include(admin.site.urls)),
@@ -26,7 +26,7 @@ urlpatterns = patterns('',
     url(r'^fantasy/', include(fantasy.urls)),
     url(r'^account/', include(account.urls)),
     url(r'^about/', include(about.urls)),
-
+    url(r'^story/', include(story.urls)),
 )
 
 

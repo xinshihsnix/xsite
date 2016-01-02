@@ -30,7 +30,7 @@ def search(request):
 
         if pwd and hashlib.md5(pwd).hexdigest() == settings.EYE_PWD_MD5:
             if request.session['xinshi_flag_A']:
-                request.session['xinshi'] = 'i_am_xinshi'
+                request.session['whoareyou'] = 'i_am_xinshi'
             return render_to_response('monkey/eyes.html')
     except Exception, e:
         print 'eee:', e
