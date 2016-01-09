@@ -1,0 +1,3 @@
+{% for s in storys %}
+<a onclick="fresh_content_when_click('/story/detail?id={{ s.id }}')">{{ s.title }}</a>
+{% endfor %}
