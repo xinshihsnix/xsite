@@ -26,3 +26,5 @@ class BaseModel(models.Model):
             raise Http404('No %s matches the given query.' % queryset.model._meta.object_name)
 
         return get_object_or_404(cls, pk=id)
+
+

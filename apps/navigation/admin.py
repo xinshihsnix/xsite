@@ -8,7 +8,7 @@ from django.core.files import File
 from django.contrib import admin
 
 from models import Domain
-from ..common.utils import unique_time_str
+from ..common.utils import TimeUtils
 
 
 class DomainAdmin(admin.ModelAdmin):
@@ -37,7 +37,7 @@ class DomainAdmin(admin.ModelAdmin):
 
         # ----- save icon image from web ------
         img_url = url + '/favicon.ico'
-        name = unique_time_str() + '.ico'
+        name = TimeUtils.int_time_to_str_format() + '.ico'
         content = urllib.urlretrieve(img_url)
 
         obj.favicon.save(name, File(open(content[0])), save=True)

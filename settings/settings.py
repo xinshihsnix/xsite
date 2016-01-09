@@ -46,7 +46,8 @@ INSTALLED_APPS = (
     'apps.pi',
     'apps.account',
     'apps.about',
-    'apps.statistics'
+    'apps.statistics',
+    'apps.xsite_io'
 )
 
 MIDDLEWARE_CLASSES = (

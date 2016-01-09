@@ -1,6 +1,12 @@
 # coding: utf-8
 import MySQLdb
 import smtplib
+import urllib
+import re
+
+from django.core.files import File
+
+from utils import UrlUtils
 
 
 class DBService(object):
@@ -41,7 +47,8 @@ class DBService(object):
         return dbs
 
 
-class EncryptService(object):
+class EnDecryptService(object):
+    """ 加解密 """
     def __init__(self):
         # todo
         pass
@@ -76,21 +83,57 @@ class MailService(object):
     #server['name'], server['user'], server['passwd']
     def send_mail(server, fro, to, subject, text, files=[]):
 
-        msg = MIMEMultipart()
-        msg['From'] = fro
-        msg['Subject'] = subject
-        msg['To'] = COMMASPACE.join(to) #COMMASPACE==', '
-        msg['Date'] = formatdate(localtime=True)
-        msg.attach(MIMEText(text))
+        # msg = MIMEMultipart()
+        # msg['From'] = fro
+        # msg['Subject'] = subject
+        # msg['To'] = COMMASPACE.join(to) #COMMASPACE==', '
+        # msg['Date'] = formatdate(localtime=True)
+        # msg.attach(MIMEText(text))
+        #
+        # for file in files:
+        #     part = MIMEBase('application', 'octet-stream') #'octet-stream': binary data
+        #     part.set_payload(open(file, 'rb'.read()))
+        #     encoders.encode_base64(part)
+        #     part.add_header('Content-Disposition', 'attachment; filename="%s"' % os.path.basename(file))
+        #     msg.attach(part)
+        #
+        # smtp = smtplib.SMTP(server['name'])
+        # smtp.login(server['user'], server['passwd'])
+        # smtp.sendmail(fro, to, msg.as_string())
+        # smtp.close()
+        pass
 
-        for file in files:
-            part = MIMEBase('application', 'octet-stream') #'octet-stream': binary data
-            part.set_payload(open(file, 'rb'.read()))
-            encoders.encode_base64(part)
-            part.add_header('Content-Disposition', 'attachment; filename="%s"' % os.path.basename(file))
-            msg.attach(part)
+    @classmethod
+    def send_to_xinshi(cls):
+        """ 给站长 """
+        pass
 
-        smtp = smtplib.SMTP(server['name'])
-        smtp.login(server['user'], server['passwd'])
-        smtp.sendmail(fro, to, msg.as_string())
-        smtp.close()
+
+class CrawlService(object):
+    """ 爬取 """
+    @classmethod
+    def save_img_from_url_to_db(cls, url):
+        from  ..xsite_io.models import WebImage
+        unique_f_name = UrlUtils.unique_file_name_from_url(url)
+
+        content = urllib.urlretrieve(url)
+        web_img = WebImage.objects.create()
+        web_img.image.save(unique_f_name, File(open(content[0])), save=True)
+        web_img.url = url
+        web_img.save()
+
+        return web_img
+
+    @classmethod
+    def get_img_list_from_url(cls, url, img_format='jpg'):
+        """
+        :return ['http://xx.jpg', 'http://yy.jpg']
+        """
+        page = urllib.urlopen(url)
+        html = page.read()
+        reg = r'src="(.+?\.%s)"'%img_format
+        imgre = re.compile(reg)
+        imglist = imgre.findall(html)
+        return imglist
+
+

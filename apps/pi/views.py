@@ -7,14 +7,14 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 
 from ..common.decorator import xinshi_only
-from ..common.utils import time_now_str
+from ..common.utils import TimeUtils
 
 
 @xinshi_only()
 def read_eye(request):
     type = request.GET.get('type')
     try:
-        image_data = open('/var/pi_media/{0}.jpg'.format(time_now_str()))
+        image_data = open('/var/pi_media/{0}.jpg'.format(TimeUtils.time_now_to_str_format()))
         # image_data.close()
         if type == 'get_status':
             return HttpResponse(json.dumps({'status': 'ready'}), content_type='application/json')

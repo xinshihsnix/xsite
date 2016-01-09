@@ -16,7 +16,7 @@ class Domain(BaseModel):
     url = models.CharField(max_length=400, verbose_name=u'url', default='')
     title = models.CharField(max_length=400, verbose_name=u'标题', blank=True, default='')
     description = models.CharField(max_length=400, verbose_name=u'描述', blank=True, default='')
-    favicon = models.ImageField(upload_to='image/navigation/favicon/', verbose_name='网站icon', default='', null=True, blank=True)
+    favicon = models.ImageField(upload_to='image/navigation/', verbose_name='网站icon', default='', null=True, blank=True)
 
     def __unicode__(self):
         return self.url

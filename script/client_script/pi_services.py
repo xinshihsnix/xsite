@@ -3,7 +3,7 @@ import cv2
 import time
 import requests
 
-from utils import time_now_str
+from utils import TimeUtils
 
 # capture = cv2.VideoCapture(0)
 #
@@ -23,7 +23,7 @@ class Divineye(object):
 
     def save_img(self):
         ret, img = self.capture.read()
-        cv2.imwrite(self.img_save_path + time_now_str()+'.jpg', img)
+        cv2.imwrite(self.img_save_path + TimeUtils.time_now_to_str_format()+'.jpg', img)
         self.capture.release()
 
 
@@ -44,7 +44,7 @@ class FileUploader(object):
 
     @classmethod
     def upload_to_xsite(cls):
-        loader = cls(file_dir=PI_IMG_STORE_PATH, filename='%s.jpg'%time_now_str(), dest_url='http://192.168.1.102:9527/upload_file/')
+        loader = cls(file_dir=PI_IMG_STORE_PATH, filename='%s.jpg'%TimeUtils.time_now_to_str_format(), dest_url='http://192.168.1.102:9527/upload_file/')
         loader.upload_file()
 
 # if __name__ == '__main__':

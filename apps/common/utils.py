@@ -15,10 +15,24 @@ def section_list(list, rows):
     return section
 
 
-def unique_time_str():
-    """ 1343142315.35345 --> '134314231535345' """
-    return str(time.time()).replace('.', '')
+class TimeUtils(object):
+
+    @classmethod
+    def int_time_to_str_format(cls):
+        """ 1343142315.35345 --> '134314231535345' """
+        return str(time.time()).replace('.', '')
+
+    @classmethod
+    def time_now_to_str_format(cls):
+        return datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S')
 
 
-def time_now_str():
-    return datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S')
+class UrlUtils(object):
+
+    @classmethod
+    def unique_file_name_from_url(cls, url):
+        full_name = url.split('/')[-1]
+        postfix = full_name.split('.')[-1]
+        unique_full_name = TimeUtils.int_time_to_str_format() + '.' + postfix
+        return unique_full_name
+
