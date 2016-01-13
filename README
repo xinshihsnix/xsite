@@ -24,3 +24,16 @@
 
 密码字段出现在一个不安全的 http:// 页面中。这是一个可能导致用户登录凭据被窃取的安全风险
 密码字段出现在一个不安全的 http:// 表单动作中。这是一个可能导致用户登录凭据被窃取的安全风险。
+
+sudo apt-get install python-pip
+
+sudo apt-get install mysql-server mysql-client
+sudo apt-get install python-mysqldb
+
+sudo pip install pycrypto==2.6.1
+    error: Setup script exited with error: command 'gcc' failed with exit status 1
+    sudo apt-get install python-dev
+
+pip install Pillow
+    jpeg is required unless explicitly disabled using --disable-jpeg, aborting
+    sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.5-dev tk8.5-dev python-tk
