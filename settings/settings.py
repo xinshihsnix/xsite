@@ -62,7 +62,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'urls'
 
-WSGI_APPLICATION = 'wsgi.application'
+WSGI_APPLICATION = 'django_wsgi.application'
 
 
 # Database
